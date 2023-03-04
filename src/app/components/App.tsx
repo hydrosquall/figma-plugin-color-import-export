@@ -1,6 +1,6 @@
 import React from 'react';
 import { ExportScreen } from 'app/screens/ExportScreen';
-import { useMuiMode } from 'app/hooks/useMuiMode';
+// import { useMuiMode } from 'app/hooks/useMuiMode';
 import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab from '@mui/joy/Tab';
@@ -9,7 +9,7 @@ import { ImportScreen } from 'app/screens/ImportScreen';
 import Box from '@mui/joy/Box';
 
 function App() {
-  useMuiMode();
+  // useMuiMode();
 
   return (
     <Tabs

@@ -1,15 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const SentryCliPlugin = require('@sentry/webpack-plugin');
+// const SentryCliPlugin = require('@sentry/webpack-plugin');
 const { DefinePlugin } = require('webpack')
 const PackageJSON = require('./package.json');
 
 const path = require('path')
 
 module.exports = (env, argv) => {
-  const GA_ENABLED = argv.mode === 'production' ? true : false
-  const SENTRY_ENABLED = argv.mode === 'production' ? true : false
+  const GA_ENABLED = false;
+  const SENTRY_ENABLED = false;
 
   return {
     mode: argv.mode === 'production' ? 'production' : 'development',
@@ -49,12 +49,6 @@ module.exports = (env, argv) => {
     },
 
     plugins: [
-      SENTRY_ENABLED && new SentryCliPlugin({
-        include: 'dist',
-        ignore: ['node_modules'],
-        release: PackageJSON.version,
-        configFile: '.sentryclirc',
-      }),
       new DefinePlugin({
         'SENTRY_ENABLED': GA_ENABLED,
         'GA_ENABLED': SENTRY_ENABLED,
